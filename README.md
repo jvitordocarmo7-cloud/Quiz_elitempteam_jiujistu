@@ -1,130 +1,272 @@
-# 🥋 Quiz Jiu-Jitsu Elite Team
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Jiu-Jitsu</title>
 
-Um site interativo de quiz sobre jiu-jitsu com diferentes níveis de dificuldade. Teste seu conhecimento sobre técnicas, terminologia e regras do jiu-jitsu!
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-## 🎯 Características
+<div class="container">
 
-- **3 Níveis de Dificuldade**
-  - Fácil: Perguntas básicas para iniciantes
-  - Médio: Perguntas intermediárias para alunos regulares
-  - Difícil: Perguntas avançadas para especialistas
+    <h1>🥋 Quiz de Jiu-Jitsu</h1>
 
-- **10 Perguntas por Nível**
-  - Múltipla escolha com 4 opções
+    <div id="quiz">
 
-- **Sistema de Pontuação**
-  - Acompanhamento de progresso visual
-  - Feedback detalhado sobre o desempenho
-  - Mensagens motivacionais baseadas na pontuação
+        <h2 id="pergunta"></h2>
 
-- **Interface Responsiva**
-  - Design adaptável para celular, tablet e desktop
-  - Tema profissional com cores de jiu-jitsu
+        <div id="respostas"></div>
 
-- **Navegação Intuitiva**
-  - Botões anteriores e próximos
-  - Barra de progresso visual
-  - Contador de perguntas
+        <button id="proxima">Próxima</button>
 
-## 📁 Estrutura do Projeto
+    </div>
 
-```
-Quiz_elitempteam_jiujistu/
-├── index.html      # Estrutura HTML da página
-├── styles.css      # Estilos CSS
-├── script.js       # Lógica do quiz em JavaScript
-└── README.md       # Este arquivo
-```
+    <div id="resultado" class="escondido">
 
-## 🚀 Como Usar
+        <h2>Resultado</h2>
 
-1. **Clonar o repositório**
-   ```bash
-   git clone https://github.com/jvitordocarmo7-cloud/Quiz_elitempteam_jiujistu.git
-   cd Quiz_elitempteam_jiujistu
-   ```
+        <p id="pontuacao"></p>
 
-2. **Abrir a página**
-   - Abra o arquivo `index.html` em um navegador web
-   - Ou acesse através do GitHub Pages (após ativar)
+        <button onclick="reiniciarQuiz()">
+            Jogar Novamente
+        </button>
 
-3. **Jogar**
-   - Selecione um nível de dificuldade
-   - Responda às 10 perguntas
-   - Navegue entre as perguntas usando os botões
-   - Veja seus resultados ao final
+    </div>
 
-## 🎨 Personalização
+</div>
 
-### Adicionar Novas Perguntas
+<script src="script.js"></script>
 
-Edite o arquivo `script.js` e adicione novas perguntas no array `quizData`:
-
-```javascript
-{
-    question: "Sua pergunta aqui?",
-    options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4"],
-    correct: 0  // Índice da resposta correta (0-3)
+</body>
+</html>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
-```
 
-### Alterar Cores
-
-Modifique as variáveis CSS no arquivo `styles.css`:
-
-```css
-:root {
-    --primary-color: #c41e3a;      /* Cor vermelha principal */
-    --secondary-color: #1a1a1a;    /* Cor escura */
-    --accent-color: #ffd700;       /* Cor de destaque */
+body{
+    background:#0f0f0f;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
-```
 
-## 📊 Estrutura das Perguntas
+.container{
+    width:95%;
+    max-width:700px;
+    background:#1a1a1a;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,215,0,.25);
+}
 
-Cada pergunta contém:
-- **question**: O texto da pergunta
-- **options**: Array com 4 opções de resposta
-- **correct**: Índice da resposta correta (0-3)
+h1{
+    text-align:center;
+    color:#FFD700;
+    margin-bottom:30px;
+}
 
-## 🌐 GitHub Pages
+h2{
+    margin-bottom:20px;
+}
 
-Para ativar o GitHub Pages:
-1. Vá para Settings do repositório
-2. Em Pages, selecione "Deploy from a branch"
-3. Escolha a branch "main" e a pasta "root"
-4. Salve as alterações
-5. A página estará disponível em: `https://jvitordocarmo7-cloud.github.io/Quiz_elitempteam_jiujistu`
+#respostas{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
 
-## 💡 Ideias de Melhorias
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
 
-- [ ] Adicionar mais perguntas e níveis
-- [ ] Sistema de ranking/pontuação
-- [ ] Explicações detalhadas para cada resposta
-- [ ] Imagens e vídeos das técnicas
-- [ ] Cronômetro para o quiz
-- [ ] Base de dados com respostas do usuário
-- [ ] Modo multiplayer
-- [ ] Certificado ao final do quiz
+#respostas button{
+    background:#2c2c2c;
+    color:#fff;
+}
 
-## 🤝 Contribuições
+#respostas button:hover{
+    background:#FFD700;
+    color:#000;
+}
 
-Contribuições são bem-vindas! Sinta-se livre para abrir issues ou pull requests com:
-- Novas perguntas
-- Melhorias na interface
-- Correções de bugs
-- Sugestões de recursos
+#proxima{
+    margin-top:25px;
+    background:#FFD700;
+    color:#000;
+    font-weight:bold;
+}
 
-## 📝 Licença
+#proxima:hover{
+    background:#e6c200;
+}
 
-Este projeto está sob licença [MIT](LICENSE).
+.escondido{
+    display:none;
+}
 
-## 👨‍🏫 Sobre o Elite Team Jiu-Jitsu
+#resultado{
+    text-align:center;
+}
 
-Este é um projeto desenvolvido para a comunidade de jiu-jitsu Elite Team!
+#pontuacao{
+    font-size:24px;
+    margin:25px 0;
+    color:#FFD700;
+}
 
----
+@media(max-width:600px){
 
-**Desenvolvido com 🥋 e ❤️**
+.container{
+padding:20px;
+}
 
-Boa sorte no quiz! 🏆
+h1{
+font-size:28px;
+}
+
+button{
+font-size:16px;
+padding:14px;
+}
+
+}
+const perguntas = [
+  {
+    pergunta: "Em uma luta oficial, qual posição vale 4 pontos?",
+    respostas: [
+      "Montada",
+      "Pegada na gola",
+      "Meia-guarda",
+      "Raspagem"
+    ],
+    correta: 0
+  },
+  {
+    pergunta: "Quanto vale uma raspagem bem-sucedida?",
+    respostas: [
+      "1 ponto",
+      "2 pontos",
+      "3 pontos",
+      "4 pontos"
+    ],
+    correta: 1
+  },
+  {
+    pergunta: "Quanto vale uma passagem de guarda?",
+    respostas: [
+      "2 pontos",
+      "3 pontos",
+      "4 pontos",
+      "Não pontua"
+    ],
+    correta: 1
+  },
+  {
+    pergunta: "O que acontece se um atleta desiste batendo no adversário ou no tatame?",
+    respostas: [
+      "Recebe vantagem",
+      "Empata a luta",
+      "Perde por finalização",
+      "Recebe punição"
+    ],
+    correta: 2
+  },
+  {
+    pergunta: "Qual posição vale 2 pontos?",
+    respostas: [
+      "Montada",
+      "Queda",
+      "Pegada de costas",
+      "Joelho na barriga"
+    ],
+    correta: 1
+  }
+];
+
+let indice = 0;
+let pontos = 0;
+
+const pergunta = document.getElementById("pergunta");
+const respostas = document.getElementById("respostas");
+const proxima = document.getElementById("proxima");
+
+function carregarPergunta() {
+
+  respostas.innerHTML = "";
+
+  pergunta.innerText = perguntas[indice].pergunta;
+
+  perguntas[indice].respostas.forEach((resp, i) => {
+
+    const botao = document.createElement("button");
+
+    botao.innerText = resp;
+
+    botao.onclick = () => verificar(i);
+
+    respostas.appendChild(botao);
+
+  });
+
+}
+
+function verificar(resposta) {
+
+  if (resposta === perguntas[indice].correta) {
+    pontos++;
+  }
+
+  Array.from(respostas.children).forEach(btn => {
+    btn.disabled = true;
+  });
+
+}
+
+proxima.onclick = () => {
+
+  indice++;
+
+  if (indice < perguntas.length) {
+
+    carregarPergunta();
+
+  } else {
+
+    document.getElementById("quiz").style.display = "none";
+
+    document.getElementById("resultado").classList.remove("escondido");
+
+    document.getElementById("pontuacao").innerText =
+      `Você acertou ${pontos} de ${perguntas.length} perguntas!`;
+
+  }
+
+}
+
+function reiniciarQuiz() {
+
+  indice = 0;
+  pontos = 0;
+
+  document.getElementById("quiz").style.display = "block";
+
+  document.getElementById("resultado").classList.add("escondido");
+
+  carregarPergunta();
+
+}
+
+carregarPergunta();
